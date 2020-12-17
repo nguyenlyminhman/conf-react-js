@@ -1,31 +1,40 @@
 import React from 'react';
-import {Divider, List, ListItem, ListItemIcon,  ListItemText } from '@material-ui/core';
-import {MoveToInbox, Mail} from '@material-ui/icons';
+import { NavLink } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
+import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { MoveToInbox } from '@material-ui/icons';
+import style from '../../src/module/style'
 
 const DrawerMenu = props => {
 
     return (
-        <>
-            <Divider />
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <MoveToInbox /> : <Mail />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <MoveToInbox /> : <Mail />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
-        </>
+        <List>
+            <ListItem button key={1}>
+                <ListItemIcon><MoveToInbox /> </ListItemIcon>
+                <NavLink exact to="/login" >
+                    <ListItemText primary={'Login'} />
+                </NavLink>
+            </ListItem>
+            <ListItem button key={2}>
+                <ListItemIcon><MoveToInbox /> </ListItemIcon>
+                <NavLink exact to="/demo" >
+                    <ListItemText primary={'Demo'} />
+                </NavLink>
+            </ListItem>
+            <ListItem button key={3}>
+                <ListItemIcon><MoveToInbox /> </ListItemIcon>
+                <NavLink exact to="/test" >
+                    <ListItemText primary={'test'} />
+                </NavLink>
+            </ListItem>
+            <ListItem button key={4}>
+                <ListItemIcon><MoveToInbox /> </ListItemIcon>
+                <NavLink exact to="/" >
+                    <ListItemText primary={'Home'} />
+                </NavLink>
+            </ListItem>
+        </List>
     )
 };
 
-export default DrawerMenu;
+export default withStyles(style)(DrawerMenu);

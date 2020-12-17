@@ -1,14 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid, Paper } from '@material-ui/core';
 
-const Home = props => {
+
+const Demo = props => {
     return (
         <Grid container spacing={3}>
             <Grid item xs={12}>
-                <Paper>Home</Paper>
+                <Paper>Demo</Paper>
             </Grid>
         </Grid>
     );
 };
 
-export default Home;
+
+export default Demo;

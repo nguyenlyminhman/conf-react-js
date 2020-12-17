@@ -5,7 +5,7 @@ const Home = props => {
     return (
         <Grid container spacing={3}>
             <Grid item xs={12}>
-                <Paper>Home</Paper>
+                <Paper>Test</Paper>
             </Grid>
         </Grid>
     );

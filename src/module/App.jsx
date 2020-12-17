@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import { BrowserRouter as Router } from 'react-router-dom'
 import { withStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -24,7 +25,7 @@ import { Container } from '@material-ui/core';
 import DrawerMenu from '../layout/DrawerMenu';
 import Header from '../layout/Header'
 import Home from './home';
-
+import RouteConf from '../router'
 
 
 const App = props => {
@@ -42,38 +43,38 @@ const App = props => {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <Header isOpen={open}/>
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
+      <Router>
+        <CssBaseline />
+        <Header isOpen={open} />
+        <Drawer
+          variant="permanent"
+          className={clsx(classes.drawer, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
-          }),
-        }}
-        onMouseOver={handleDrawerOpen}
-        onMouseOut={handleDrawerClose}
-      >
-        <div className={classes.toolbar}>
-          {/* <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton> */}
-        </div>
-
-        <DrawerMenu />
-      
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-
-        <Home />
-        
-      </main>
+          })}
+          classes={{
+            paper: clsx({
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open,
+            }),
+          }}
+          onMouseOver={handleDrawerOpen}
+          onMouseOut={handleDrawerClose}
+        >
+          <div className={classes.toolbar}>
+            <IconButton >
+              <Typography variant="h6" noWrap>
+                Nguyen Ly Minh Man
+          </Typography>
+            </IconButton>
+          </div>
+          <DrawerMenu />
+        </Drawer>
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
+          <RouteConf />
+        </main>
+      </Router>
     </div>
   );
 }
