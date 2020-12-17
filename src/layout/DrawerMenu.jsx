@@ -1,9 +1,6 @@
 import React from 'react';
-import style from '../../src/module/style'
-import { withStyles } from '@material-ui/core/styles';
 import {Divider, List, ListItem, ListItemIcon,  ListItemText } from '@material-ui/core';
 import {MoveToInbox, Mail} from '@material-ui/icons';
-
 
 const DrawerMenu = props => {
 
@@ -31,4 +28,4 @@ const DrawerMenu = props => {
     )
 };
 
-export default withStyles(style)(DrawerMenu);
+export default DrawerMenu;

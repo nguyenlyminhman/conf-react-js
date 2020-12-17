@@ -2,21 +2,18 @@ import React from 'react';
 import clsx from 'clsx';
 import style from '../../src/module/style'
 
-import { withStyles, useTheme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, IconButton } from '@material-ui/core';
-
-import Menu from '@material-ui/icons/Menu';
-
+import {Menu} from '@material-ui/icons';
 
 
 const Header = props => {
-  const { classes } = props;
+  const { classes, isOpen } = props;
   return (
-    <div className={classes.root}>
-      <AppBar
+    <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: props.isSlide,
+          [classes.appBarShift]: isOpen,
         })}
       >
         <Toolbar>
@@ -25,17 +22,16 @@ const Header = props => {
             aria-label="open drawer"
             edge="start"
             className={clsx(classes.menuButton, {
-              [classes.hide]: props.isSlide,
+              [classes.hide]: isOpen,
             })}
           >
             <Menu />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Company Name
+            CLV 193555
           </Typography>
         </Toolbar>
       </AppBar>
-    </div>
   );
 };
 
