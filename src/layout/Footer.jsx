@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
-class Footer extends Component {
-    render() {
-        return (
-            <div>
-                
-            </div>
-        );
-    }
-}
+import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import style from '../../src/module/style'
 
-Footer.propTypes = {
 
+
+const Footer = props => {
+    return (
+        <> </>
+    );
 };
 
-export default Footer;
+
+export default withStyles(style)(Footer);
