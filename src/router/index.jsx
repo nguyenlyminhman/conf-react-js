@@ -1,21 +1,41 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React, {Component} from 'react';
+import { Route, Redirect, Switch} from 'react-router-dom';
+import ProtectedRouters from './ProtectedRouter';
 
-import Home from '../module/home';
-import Login from '../module/login';
-import Demo from '../module/demo';
-import Test from '../module/test';
+export default class RouterApp extends Component {
 
-const RouteConf = props => {
+  shouldComponentUpdate() {
+    return false;
+  }
+
+  render() {
+    const { routes = [] } = this.props;
     return (
-        <div>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/demo" component={Demo} />
-            <Route exact path="/test" component={Test} />
-        </div>
+      <Switch>
+        {
+          routes.filter(
+            route => route.component || route.redirect
+          ).map(
+            ({ redirect, ...route }) => {
+              if (redirect) return (
+                <Route { ...route } >
+                  <Redirect { ...redirect } />
+                </Route>
+              );
+              let RealComponent = route.component;
+              return route.isAuthPage ?
+                (
+                  <ProtectedRouters {...route} />
+                ) : (
+                  <Route
+                    {...route}
+                    render={() => <RealComponent />}
+                  />
+                );
+            }
+          )
+        }
+      </Switch>
     );
-};
-
-
-export default RouteConf;
+  }
+}
