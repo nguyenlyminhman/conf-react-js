@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import clsx from 'clsx';
 import { withStyles, useTheme } from '@material-ui/core/styles';
@@ -25,8 +26,15 @@ import DrawerMenu from '../layout/DrawerMenu';
 import Header from '../layout/Header'
 import Home from './home';
 
+=======
+import React, { Component, Suspense, lazy } from 'react';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+>>>>>>> 2cd1cd9... Re-structure project
 
+const FullscreenLayout = lazy(() => import(/* webpackChunkName: "layouts" */ 'layout/fullscreen'));
+const DefaultLayout = lazy(() => import(/* webpackChunkName: "layouts" */ 'layout/default'));
 
+<<<<<<< HEAD
 const App = props => {
   const { classes } = props;
   const theme = useTheme();
@@ -76,6 +84,24 @@ const App = props => {
       </main>
     </div>
   );
+=======
+class Application extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <Suspense fallback={false}>
+          <Switch>
+            <Route path="/" exact>
+              <Redirect to="/login" />
+            </Route>
+            <Route path="/yeb" render={() => <DefaultLayout />} />
+            <Route path="/" render={() => <FullscreenLayout />} />
+          </Switch>
+        </Suspense>
+      </BrowserRouter>
+    );
+  }
+>>>>>>> 2cd1cd9... Re-structure project
 }
 
-export default withStyles(styles)(App)
+export default Application;

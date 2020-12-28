@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import style from '../../src/module/style'
+import style from '../style'
 
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, IconButton } from '@material-ui/core';
