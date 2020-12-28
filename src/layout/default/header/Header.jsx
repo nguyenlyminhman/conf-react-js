@@ -28,7 +28,7 @@ const Header = props => {
             <Menu />
           </IconButton>
           <Typography variant="h6" noWrap>
-            CLV 193555
+            Cyber Logitec VietNam Coporation
           </Typography>
         </Toolbar>
       </AppBar>
